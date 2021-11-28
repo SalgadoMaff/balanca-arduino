@@ -35,7 +35,7 @@ void loop() {
     if(b1=='c'){ //opção calibragem
       calibra();  //calibragem
     }else if(b1=='p'){//opção de printar
-      delay(300);//espera para enviar
+      delay(1000);//espera para enviar
       bluetooth.println(Peso,3); // O Arduino envia o peso lido através do modulo bluetooth
     }
   }
