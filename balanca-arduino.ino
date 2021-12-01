@@ -30,13 +30,15 @@ void loop() {
   Display_lcd.setCursor(0, 2); // Linha zero e coluna dois
   Display_lcd.print("Peso (Kg):");; // Mensagem escolhida
   Display_lcd.print (Peso,3); // Printando o peso no display LCD
+  if(Peso>0){
+    bluetooth.println(Peso,3); // manda peso
+  }
+  bluetooth.listen();//escuta se há entrada
   if(bluetooth.available()>0){  //verifica se há dados
     b1=bluetooth.read(); //coloca o valor lido
     if(b1=='c'){ //opção calibragem
       calibra();  //calibragem
-    }else if(b1=='p'){//opção de printar
-      delay(1000);//espera para enviar
-      bluetooth.println(Peso,3); // O Arduino envia o peso lido através do modulo bluetooth
+      delay(300); //espera a estabilizar
     }
   }
 }
